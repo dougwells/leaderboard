@@ -10,6 +10,11 @@
 
 <template name="leaderboard">
     <p>Hello World!</p>
-    {{player}}
+    <ul>
+        <h5>Name Score</h5>
+    {{#each player}}
+        <li class="player" id= "{{changeColor}}">{{name}} {{score}} </li>
+    {{/each}}
+    </ul>
 
 </template>
