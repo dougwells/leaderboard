@@ -4,22 +4,28 @@
 
 <body>
 <h1>Leaderboard</h1>
-
 {{>leaderboard}}
+{{>addPlayerForm}}
 </body>
 
 <template name="leaderboard">
-
     <ul>
         <h5>Name Score</h5>
     {{#each player}}
         <li class="player" id= "{{changeColor}}">{{name}} {{score}} </li>
     {{/each}}
-        <input type="button" id="increment" value = "Give 5 points">
         {{#if playerName}}
         <h4>Selected player is {{playerName}}</h4>
         {{/if}}
+        <input type="button" id="increment" value = "Give 5 points">
+        <input type="button" id="decrement" value = "Take Away 5 points">
+        <input type="button" id="deletePlayer" value = "Delete Player">
     </ul>
+</template>
 
-
+<template name="addPlayerForm">
+    <form class ='test'>
+        <input type="text" id="playerName">
+        <input type="submit" value="Add Player">
+    </form>
 </template>
