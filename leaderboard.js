@@ -7,7 +7,7 @@ if (Meteor.isClient){
 
     Template.leaderboard.helpers({
         player: function(){
-            return PlayersList.find();
+            return PlayersList.find({},{sort:{score:-1, name:1}});
         },
         changeColor: function(){
             if(this._id == Session.get('selectedPlayer')){
