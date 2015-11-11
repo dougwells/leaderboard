@@ -7,7 +7,8 @@ if (Meteor.isClient){
 
     Template.leaderboard.helpers({
         player: function(){
-            return PlayersList.find({},{sort:{score:-1, name:1}});
+            var currentUserId = Meteor.userId();
+            return PlayersList.find({createdBy: currentUserId},{sort:{score:-1, name:1}});
         },
 
         //run in HTML therefore "this" comes from HTML for each "player"
@@ -50,7 +51,12 @@ if (Meteor.isClient){
         'submit form' : function(event, template){
             event.preventDefault();
             var playerNameVar = template.find('#playerName').value;
-            PlayersList.insert({name:playerNameVar, score:0});
+            var currentUserId = Meteor.userId();
+            PlayersList.insert({
+                name:playerNameVar,
+                score:0,
+                createdBy: currentUserId
+            });
         }
     })
 
